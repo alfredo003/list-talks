@@ -42,9 +42,11 @@ function TodoList(){
                 <span>{item.text}</span>
                 <button className="del">Deletar</button>
               </div>
+
           ))
-          
-        }
+ }
+           <button className="deleteAll">Delete All</button>
+       
         </div>
         
       </div>
