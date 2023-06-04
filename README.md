@@ -1,4 +1,4 @@
-My React To-Do List Project
+# My React To-Do List Project
 This is my React.js study project where I created a to-do list application. It has been a fun and challenging experience exploring React concepts such as using useState and creating components.
 
 Technologies Used
