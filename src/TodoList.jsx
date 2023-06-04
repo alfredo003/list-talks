@@ -1,23 +1,52 @@
-import React from "react";
+import React,{ useState } from "react";
 import './TodoList.css';
-
+import Icone from './assets/icon.webp'
 function TodoList(){
+  const [list,setList] = useState([]);
+  const [newItem,setNewItem]=useState("");
+
+  function addItem(form){
+   form.preventDefault();
+
+   if(!newItem){
+    return;
+   }
+
+   setList([...list,{text:newItem, isCompleted:false}]);
+   setNewItem("");
+   document.getElementById('input').focus();
+  }
   return(
     <div>
       <h1>To Do List</h1>
-      <form action="">
-        <input type="text" placeholder="Add new task"/>
-      <button type="submit">Add</button>
+      <form onSubmit={addItem}>
+        <input 
+          type="text"
+          id="input"
+          value={newItem} 
+          onChange={(e)=>{setNewItem(e.target.value)}}
+          placeholder="Add new task"
+        />
+
+      <button type="submit" className="add">Add</button>
       </form>
       <div className="listTask">
-        <div className="item">
-          <span>Tarefa de exemplo</span>
-          <button>Deletar</button>
+        <div>
+        {
+          list.length < 1
+          ?
+          <img  className="icone-central" src={Icone}/>
+          :
+          list.map((item, index)=>(
+              <div className="item">
+                <span>{item.text}</span>
+                <button className="del">Deletar</button>
+              </div>
+          ))
+          
+        }
         </div>
-        <div className="item completo">
-          <span>Tarefa de exemplo</span>
-          <button>Deletar</button>
-        </div>
+        
       </div>
     </div>
   
